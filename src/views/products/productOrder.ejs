@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include("../partials/head")%>
+
+<body>
+    <%- include("../partials/header")%>
+
+    <main>
+        <h2>¡Gracias por tu compra <%=user.firstName%> !</h2>
+        <h2 class="title">Resumen:</h2>
+
+        <% let totalPrice = 0 %>
+        <% for( let i = 0; i < products.length; i++ ) { 
+            let subtotalPrice = products[i].price*products[i].amount
+            totalPrice += subtotalPrice
+            %>
+        <div class="order">
+            <h3 class="title-register"><%=products[i].name%></h3>
+            <div class="control-order">
+                <p>Talle: <%=products[i].size%></p>
+                <p>Cantidad: <%=products[i].amount%>
+                    <p>Precio: $<%=toThousand(products[i].price) %>
+                        <p>Subtotal: $<%=toThousand(subtotalPrice)%>
+            </div>
+        </div>
+        <% } %>
+        <br>
+        <div class="center">
+            <span class="order-price">Total:$<%= toThousand(totalPrice) %></span>
+        </div>
+
+        </br>
+
+        <!-- <div class="newsletter">
+
+            <form action="/" method="POST" class="newsletter">
+
+                <h3 class="newsletter-title">SUSCRIBITE AL NEWSLETTER</h3>
+                <div class="control-formulario">
+                    <input type="email" name="email" id="email" placeholder="Ingresá tu email" class="control">
+                    <button type="submit" class="boton-suscribe">SUSCRIBIRME</button>
+                </div>
+            </form>
+
+        </div> -->
+
+    </main>
+    <%- include("../partials/footer")%>
+
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+    <header class="main-header">
+        <div class="arriba">
+            <h3>¡3 , 6 y 12 CUOTAS SIN INTERES!</h3>
+        </div>
+        <div class="header-top-bar">
+
+            <div class="contenedor-menu" id="contenedor-menu">
+                <i class="fas fa-bars menu-desplegable"></i>
+            </div>
+            <div class="menu-open" id="menu-open">
+                <ul class="open-list">
+                    <li><span class="menu-close" id="menu-close">x</span></li>
+                    <li><a href="/products" id="link-desplegable">PRODUCTOS</a></li>
+                    <li><a href="/products/productsMan" id="link-desplegable">HOMBRE</a></li>
+                    <li><a href="/products/productsWoman" id="link-desplegable">MUJER</a></li>
+                    <li><a href="/products/productsKids" id="link-desplegable">NIÑOS</a></li>
+                    <li><a href="/products/productsMarks" id="link-desplegable">MARCAS</a></li>
+                    <li><img src="/images/kicks.png" alt=""></li>
+                </ul>
+
+            </div>
+            <a href="/" class="home"><img src="/images/kicks.png" alt="logo kicks" class="logo" id="mainLogo"></a>
+
+            <% if (locals.isLogged) { %>
+            <div class="icons-section">
+
+                <a href="/users/profile"><img src="/images/users/<%=locals.userLogged.image%>" alt=""
+                        class="imagen-perfil-miniatura"></a>
+
+                <a href="/products/productCart"><i class="fas fa-shopping-cart"></i></a>
+
+            </div>
+            <% }else{%>
+            <div class="icons-section">
+                <a href="/users/login"><i class="fas fa-user"></i></a>
+                <a href="/products/productCart"><i class="fas fa-shopping-cart"></i></a>
+                <!-- <a href="/"><i class="fas fa-share-alt-square"></i></a> -->
+            </div>
+
+            <%}%> 
+
+
+
+            
+            <form action="/search" method="GET" class="search-form">
+                <input type="text" name="search" placeholder="¿Qué estás buscando?" class="campo-busqueda">
+                <button type="submit" class="search-button"><i class="fas fa-search"></i></button>
+            </form>
+        </div>
+
+        <nav class="header-bottom-bar">
+            <ul>
+                <li><a href="/products" class="linknav">PRODUCTOS</a></li>
+                <li><a href="/products/productsMan" class="linknav">HOMBRE</a></li>
+                <li><a href="/products/productsWoman" class="linknav">MUJER</a></li>
+                <li><a href="/products/productsKids" class="linknav">NIÑOS</a></li>
+                <li><a href="/products/productsMarks" class="linknav">MARCAS</a></li>
+            </ul>
+
+        </nav>
+        <script src="/js/interacciones.js"></script>
+    </header>

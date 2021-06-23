@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include("../partials/head")%>
+
+<body>
+    <%- include("../partials/header")%>
+
+    <main>
+        <div class="login-bar auto">
+            <h2 class="title">Iniciar Sesión</h2>
+            <form action="/users/login" method="POST" class="form">
+                <div class="register-formulario">
+                    <label for="user" class="obligatorio">* Email</label>
+                    <input type="text" name="email" id="user" placeholder="Email..." class="control-login"
+                        value=<%= locals.old && old.email? old.email:null  %>>
+                    <div class="alert erName"></div>
+                    <% if (locals.errors && errors.email) { %>
+                    <p class="alert2"><%=errors.email.msg%></p>
+
+                    <% } %>
+                </div>
+                <div class="register-formulario">
+                    <label for="password" class="obligatorio">* Contraseña</label>
+                    <input type="password" name="password" id="password" placeholder="Contraseña..."
+                        class="control-login" />
+                    <div class="alert erPassword"></div>
+                </div>
+
+                <div class="register-formulario center">
+                    <label for="record"></label>
+                    <input type="checkbox" name="record" id="record" /> Recuérdame
+                    <a href="#">
+                        <p class="re-password">¿Olvidaste tu contraseña?</p>
+                    </a>
+                </div>
+                <div>
+                    <button type="submit" class="boton-login">INICIAR SESIÓN</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="new-account">
+            <p class="italic center re-size padding-top">¿Todavía no tienes cuenta?</p>
+            <a href="/users/register">
+                <div class="center">
+                    <button type="submit" class="submit-button">Crear nueva cuenta</button>
+                </div>
+            </a>
+        </div>
+
+        <div class="newsletter">
+
+            <h3 class="newsletter-title">SUSCRIBITE AL NEWSLETTER</h3>
+            <div class="control-formulario">
+                <input type="email" name="email" id="emailSuscripcion" placeholder="Ingresá tu email" class="control"
+                    required>
+                <button type="button" class="boton-suscribe" id="botonSuscribe">SUSCRIBIRME</button>
+            </div>
+
+            <div class="modal-container" id="suscripcion">
+                <h3>¡Gracias por suscribirte a nuestro Newsletter <span id="suscriptor"></span>!</h3>
+                <button type="button" class="button-edit" id="cerrarSuscripcion">Cerrar</button>
+            </div>
+            <div class="modal-container" id="ingresaEmail">
+                <h3>Ingresá un Email para Suscribirte</h3>
+                <button type="button" class="button-edit" id="cerrarEmail">Cerrar</button>
+            </div>
+        </div>
+    </main>
+
+    <%- include("../partials/footer")%>
+
+    <script src="/js/validationsLogin.js"></script>
+
+</body>
+
+</html>

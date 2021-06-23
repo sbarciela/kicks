@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include("./partials/head")%>
+
+<body>
+    <%- include("./partials/header")%>
+
+    <div class="carousel">
+        <div class="slideshow-container">
+            <div class="mySlides fade">
+                <img src="/images/banner-nike.jpg" style="width:100%">
+            </div>
+
+            <div class="mySlides fade">
+                <img src="/images/banner-vans.png" style="width:100%">
+            </div>
+
+            <div class="mySlides fade">
+                <img src="/images/banner-adidas.png" style="width:100%">
+            </div>
+
+            <div class="mySlides fade">
+                <img src="/images/banner-puma.jpg" style="width:100%">
+            </div>
+
+            <a class="prev">&#10094;</a>
+            <a class="next">&#10095;</a>
+        </div>
+
+        <br>
+
+        <div style="text-align:center">
+            <span class="dot" id="dot1"></span>
+            <span class="dot" id="dot2"></span>
+            <span class="dot" id="dot3"></span>
+            <span class="dot" id="dot4"></span>
+        </div>
+    </div>
+
+    <main>
+        <div class="title">
+            <h2 class="linea"><span>DESTACADOS</span></h2>
+        </div>
+        <section class="destacados">
+            <% for( let i = 0; i < products.length; i++ ) { %>
+
+            <%if (products[i].category_id == 4 ) { 
+                let finalPrice = products[i].discount ? (products[i].price - products[i].price * products[i].discount / 100 ).toFixed(0)  : products[i].price; %>
+            %>
+            <article class="recomendado-article a1">
+                <a href="/products/<%= products[i].id %> "><img src="/images/products/<%= products[i].image %>"
+                        alt=<%= products[i].name %>></a>
+                <div class="contenedor-descripcion">
+                    <div><%= products[i].name %></div>
+                    <% if (products[i].discount) { %>
+                    <span class="small">$<%= toThousand(products[i].price) %></span> $<%= toThousand(finalPrice)  %>
+                    <p class="descuento"><%- products[i].discount ? `<span>${products[i].discount}% OFF</span>` : '' %>
+                    </p>
+                    <% } else { %>
+                    <div class="precio-carrito">$ <%= toThousand(products[i].price) %></div>
+                    <% } %>
+                </div>
+            </article>
+
+            <% } %>
+
+            <% } %>
+        </section>
+
+        <div class="title">
+            <h2 class="linea"><span>OFERTAS</span></h2>
+        </div>
+        <section class="destacados">
+            <% for( let i = 0; i < products.length; i++ ) { %>
+
+            <%if (products[i].category_id == 2) { 
+                let finalPrice = products[i].discount ? (products[i].price - products[i].price * products[i].discount / 100 ).toFixed(0)  : products[i].price; %>
+            %>
+            <article class="recomendado-article a1">
+                <a href="/products/<%= products[i].id %> "><img src="/images/products/<%= products[i].image %>"
+                        alt=<%= products[i].name %>></a>
+
+                <% if (products[i].discount) { %>
+                <span class="discountTag">
+                    <i class="fas fa-tags"></i>
+                </span>
+                <% } %>
+
+                <div class="contenedor-descripcion">
+                    <div><%= products[i].name %></div>
+                    <% if (products[i].discount) { %>
+                    <span class="small">$<%= toThousand(products[i].price) %></span> $<%= toThousand(finalPrice)  %>
+                    <p class="descuento"><%- products[i].discount ? `<span>${products[i].discount}% OFF</span>` : '' %>
+                    </p>
+
+                    <% } else { %>
+                    <div class="precio-carrito">$ <%= toThousand(products[i].price) %></div>
+                    <% } %>
+                </div>
+            </article>
+
+            <% } %>
+
+            <% } %>
+        </section>
+
+        <section class="marcas block-marks">
+            <div class="title">
+                <h2 class="linea"><span>COMPRÁ POR MARCA</span></h2>
+            </div>
+            <div class="images padding">
+                <a href="/search?search=NIKE" class="marca_img"><img src="images/marca-nike.png" alt="Nike"
+                        class="marca_int"></a>
+                <a href="/search?search=ADIDAS" class="marca_img"><img src="images/marca-adidas.png" alt="Adidas"
+                        class="marca_int"></a>
+                <a href="/search?search=PUMA" class="marca_img"><img src="images/marca-puma.png" alt="Puma"
+                        class="marca_int"></a>
+            </div>
+        </section>
+
+        <section class="marcas none-marks">
+            <div class="title">
+                <h2 class="linea"><span>COMPRÁ POR MARCA</span></h2>
+            </div>
+            <div class="images padding">
+                <a href="/search?search=NIKE" class="marca_img"><img src="images/marca-nike.png" alt="Nike"
+                        class="marca_int"></a>
+                <a href="/search?search=ADIDAS" class="marca_img"><img src="images/marca-adidas.png" alt="Adidas"
+                        class="marca_int"></a>
+                <a href="/search?search=PUMA" class="marca_img"><img src="images/marca-puma.png" alt="Puma"
+                        class="marca_int"></a>
+                <a href="/search?search=CONVERSE" class="marca_img"><img src="images/marca-converse.png" alt="Converse"
+                        class="marca_int none1"></a>
+                <a href="/search?search=VANS" class="marca_img"><img src="images/marca-vans.png" alt="Vans"
+                        class="marca_int none1"></a>
+                <a href="/search?search=NEW BALANCE" class="marca_img"><img src="images/marca-newbalance.png"
+                        alt="Newbalance" class="marca_int none2"></a>
+            </div>
+        </section>
+
+
+        <div class="medios-pago">
+            <div class="titulo-medios">MEDIOS DE PAGO</div>
+            <img src="images/medios-pago-varios.png" alt="pagoelectronico" class="imagen-pago">
+            <img src="images/medios-pago-efectivo.jpg" alt="pagoefectivo" class="imagen-pago2">
+        </div>
+
+
+        <div class="envios padding">
+            <i class="fas fa-shipping-fast"></i>¡ENVIOS SIN CARGO A TODO EL PAIS!
+        </div>
+
+        <div class="newsletter">
+
+            <div class="newsletter">
+
+                <h3 class="newsletter-title">SUSCRIBITE AL NEWSLETTER</h3>
+                <div class="control-formulario">
+                    <input type="email" name="email" id="emailSuscripcion" placeholder="Ingresá tu email"
+                        class="control" required>
+                    <button type="button" class="boton-suscribe" id="botonSuscribe">SUSCRIBIRME</button>
+                </div>
+
+                <div class="modal-container" id="suscripcion">
+                    <h3>¡Gracias por suscribirte a nuestro Newsletter <span id="suscriptor"></span>!</h3>
+                    <button type="button" class="button-edit" id="cerrarSuscripcion">Cerrar</button>
+                </div>
+                <div class="modal-container" id="ingresaEmail">
+                    <h3>Ingresá un Email para Suscribirte</h3>
+                    <button type="button" class="button-edit" id="cerrarEmail">Cerrar</button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <%- include("./partials/footer")%>
+
+</body>
+
+</html>
