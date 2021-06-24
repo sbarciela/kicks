@@ -30,8 +30,8 @@ app.set("view engine", "ejs");
 app.set('views', path.join(__dirname, 'views'));
 
 // ************ WRITE YOUR CODE FROM HERE ************
-app.listen(3000, ()=>{
-    console.log("Servidor corriendo en puerto 3000");
+app.listen(process.env.PORT || 3000,  ()=>{
+  console.log("servidor corriendo en puerto 3000");
 });
 
 // ************ Route System require and use() ************
