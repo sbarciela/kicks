@@ -1,1 +1,1 @@
-web: nodemon ./src/app -i json
+web: node src/app.js
