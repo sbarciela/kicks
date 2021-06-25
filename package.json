@@ -1,30 +1,11 @@
 {
-  "name": "kicks",
+  "name": "kicks-ecommerce",
   "version": "1.0.0",
-  "description": "Sneakers-ecommerce",
+  "description": "\"ecommerce\"",
   "main": "app.js",
-  "engines": {
-    "node": "13.x",
-    "npm": "6.x"
-  },
-  "scripts": {
-    "start": "node ./src/app.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sbarciela/kicks.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/sbarciela/kicks.git/issues"
-  },
-  "homepage": "https://github.com/sbarciela/kicks.git#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.5",
-    "dotenv": "^10.0.0",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
@@ -33,5 +14,20 @@
     "multer": "^1.4.2",
     "mysql2": "^2.2.5",
     "sequelize": "^6.6.2"
-  }
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sbarciela/kicks.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sbarciela/kicks/issues"
+  },
+  "homepage": "https://github.com/sbarciela/kicks#readme"
 }
