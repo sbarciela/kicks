@@ -4,14 +4,14 @@ const path=require("path");
 const methodOverride=require("method-override");
 const session=require("express-session");
 const cookie=require("cookie-parser");
-const userLoggedMiddleware=require("./src/middlewares/userLoggedMiddleware");
+const userLoggedMiddleware=require("./middlewares/userLoggedMiddleware");
 
 
 // ************ express() - (don't touch) ************
 const app = express();
 
 // ************ Middlewares - (don't touch) ************
-app.use(express.static(__dirname+'/public'));
+app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.urlencoded({ extended: false}));
 app.use(express.json());
 app.use(methodOverride("_method")); // Pasar poder pisar el method="POST" en el formulario por PUT y DELETE
@@ -27,7 +27,7 @@ app.use(userLoggedMiddleware);//se debe ejecutar despues de inicializar session,
 
 // ************ Template Engine - (don't touch) ************
 app.set("view engine", "ejs");
-app.set('views', "./src/views");
+app.set('views', path.join(__dirname, 'views'));
 
 // ************ WRITE YOUR CODE FROM HERE ************
 app.listen(process.env.PORT || 3000,  ()=>{
@@ -35,23 +35,23 @@ app.listen(process.env.PORT || 3000,  ()=>{
 });
 
 // ************ Route System require and use() ************
-const rutasMain= require("./src/routes/main");
+const rutasMain= require("./routes/main");
 app.use("/" , rutasMain);
 
-const rutasProductos= require("./src/routes/products");
+const rutasProductos= require("./routes/products");
 app.use("/products" , rutasProductos);
 
-const rutasUsers= require("./src/routes/users");
+const rutasUsers= require("./routes/users");
 app.use("/users" , rutasUsers);
 
-const rutasMarcas= require("./src/routes/marcas");
+const rutasMarcas= require("./routes/marcas");
 app.use("/marcas" , rutasMarcas);
 
 // ************ API Routes System require and use() ************
-const rutasApiProductos = require("./src/routes/api/apiProducts")
+const rutasApiProductos = require("./routes/api/apiProducts")
 app.use("/api/products", rutasApiProductos)
 
-const rutasApiUsuarios = require("./src/routes/api/apiUsers")
+const rutasApiUsuarios = require("./routes/api/apiUsers")
 app.use("/api/users", rutasApiUsuarios)
 
 // ************ DON'T TOUCH FROM HERE ************
