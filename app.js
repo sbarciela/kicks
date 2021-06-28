@@ -51,8 +51,8 @@ const rutasMarcas= require("./src/routes/marcas");
 app.use("/marcas" , rutasMarcas);
 
 // ************ API Routes System require and use() ************
-const rutasApiProductos = require("./src/routes/api/apiProducts")
-app.use("/api/products", rutasApiProductos)
+/*const rutasApiProductos = require("./src/routes/api/apiProducts")
+app.use("/api/products", rutasApiProductos)*/
 
 const rutasApiUsuarios = require("./src/routes/api/apiUsers")
 app.use("/api/users", rutasApiUsuarios)
